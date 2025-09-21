@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重生之瑶光倾城 - 开源小说</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            margin-top: 10px;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .description {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .description h2 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .chapter-list {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .chapter-list h2 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .act {
+            margin-bottom: 30px;
+        }
+        
+        .act-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid #764ba2;
+        }
+        
+        .chapter-item {
+            display: block;
+            padding: 12px 20px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .chapter-item:hover {
+            background: #667eea;
+            color: white;
+            border-left: 3px solid #764ba2;
+            transform: translateX(5px);
+        }
+        
+        .chapter-number {
+            font-weight: bold;
+            color: #667eea;
+            margin-right: 10px;
+        }
+        
+        .chapter-item:hover .chapter-number {
+            color: white;
+        }
+        
+        .special-chapter {
+            background: #e8f4fd;
+            border-left: 3px solid #2196F3;
+        }
+        
+        .special-chapter:hover {
+            background: #2196F3;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .footer h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .github-link {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px;
+            transition: background 0.3s ease;
+        }
+        
+        .github-link:hover {
+            background: #555;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            margin: 5px;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .stat-number {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .stats {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>重生之瑶光倾城</h1>
+        <div class="subtitle">一部关于重生、正义与希望的开源小说</div>
+    </div>
+    
+    <div class="description">
+        <h2>📖 作品简介</h2>
+        <p><strong>核心设定：</strong> 25岁的苏晓瑶在被丈夫赵凯殴打致死的瞬间，意识回溯到18岁，刚刚收到大学录取通知书、即将与赵凯确认关系并为其降级志愿的关键时间节点。她带着未来四年的痛苦记忆和死亡时的巨大痛苦与悔恨重生。</p>
+        
+        <p><strong>核心主题：</strong> 智慧复仇、成长救赎、家庭纽带、女性独立、法律正义、重生新生。</p>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">28</div>
+                <div class="stat-label">章节</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4万+</div>
+                <div class="stat-label">字数</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">开源</div>
+                <div class="stat-label">创作模式</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">真实</div>
+                <div class="stat-label">案件改编</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="warning">
+        <strong>⚠️ 重要声明：</strong> 本故事基于真实案件改编，书中所有人物均使用化名，情节存在虚构成分。创作灵感来源于真实案件，但小说情节、人物对话、心理描写等均为作者虚构，旨在通过文学形式传递正能量，呼吁社会关注家庭暴力问题。
+    </div>
+    
+    <div class="chapter-list">
+        <h2>📚 章节目录</h2>
+        
+        <div class="act">
+            <div class="act-title">献词与序言</div>
+            <a href="小说/献词.html" class="chapter-item special-chapter">
+                <span class="chapter-number">献词</span>
+                致敬真实受害者，创作背景说明
+            </a>
+        </div>
+        
+        <div class="act">
+            <div class="act-title">第一幕：涅槃与决裂（第1-10章）</div>
+            <a href="小说/第一章.html" class="chapter-item">
+                <span class="chapter-number">第1章</span>
+                楔子：死亡与重生
+            </a>
+            <a href="小说/第二章.html" class="chapter-item">
+                <span class="chapter-number">第2章</span>
+                愧疚与醒悟
+            </a>
+            <a href="小说/第三章.html" class="chapter-item">
+                <span class="chapter-number">第3章</span>
+                家庭道歉与联盟
+            </a>
+            <a href="小说/第四章.html" class="chapter-item">
+                <span class="chapter-number">第4章</span>
+                关键抉择：更改志愿
+            </a>
+            <a href="小说/第五章.html" class="chapter-item">
+                <span class="chapter-number">第5章</span>
+                首次反击与断联
+            </a>
+            <a href="小说/第六章.html" class="chapter-item">
+                <span class="chapter-number">第6章</span>
+                赵凯的困惑
+            </a>
+            <a href="小说/第七章.html" class="chapter-item">
+                <span class="chapter-number">第7章</span>
+                埋下线索
+            </a>
+            <a href="小说/第七章补一.html" class="chapter-item special-chapter">
+                <span class="chapter-number">第7补一章</span>
+                同学聚会的纠缠
+            </a>
+            <a href="小说/第七章补二.html" class="chapter-item special-chapter">
+                <span class="chapter-number">第7补二章</span>
+                智慧化解危机
+            </a>
+            <a href="小说/第八章.html" class="chapter-item">
+                <span class="chapter-number">第8章</span>
+                奔赴新程
+            </a>
+            <a href="小说/第九章.html" class="chapter-item">
+                <span class="chapter-number">第9章</span>
+                大学新生活
+            </a>
+            <a href="小说/第十章.html" class="chapter-item">
+                <span class="chapter-number">第10章</span>
+                初步联络与试探
+            </a>
+        </div>
+        
+        <div class="act">
+            <div class="act-title">第二幕：成长与布局（第11-16章）</div>
+            <a href="小说/第十一章.html" class="chapter-item">
+                <span class="chapter-number">第11章</span>
+                情报网络扩展
+            </a>
+            <a href="小说/第十二章.html" class="chapter-item">
+                <span class="chapter-number">第12章</span>
+                "成全"与观察
+            </a>
+            <a href="小说/第十三章.html" class="chapter-item">
+                <span class="chapter-number">第13章</span>
+                暗流与证据
+            </a>
+            <a href="小说/第十四章.html" class="chapter-item">
+                <span class="chapter-number">第14章</span>
+                证据链完善
+            </a>
+            <a href="小说/第十五章.html" class="chapter-item">
+                <span class="chapter-number">第15章</span>
+                林诗雨的挑衅
+            </a>
+            <a href="小说/第十六章.html" class="chapter-item">
+                <span class="chapter-number">第16章</span>
+                危机预感
+            </a>
+        </div>
+        
+        <div class="act">
+            <div class="act-title">第三幕：复仇与新生（第17-26章）</div>
+            <a href="小说/第十七章.html" class="chapter-item">
+                <span class="chapter-number">第17章</span>
+                最终导火索
+            </a>
+            <a href="小说/第十八章.html" class="chapter-item">
+                <span class="chapter-number">第18章</span>
+                网络引爆
+            </a>
+            <a href="小说/第十九章.html" class="chapter-item">
+                <span class="chapter-number">第19章</span>
+                致命一击
+            </a>
+            <a href="小说/第二十章.html" class="chapter-item">
+                <span class="chapter-number">第20章</span>
+                多米诺骨牌倒塌
+            </a>
+            <a href="小说/第二十一章.html" class="chapter-item">
+                <span class="chapter-number">第21章</span>
+                舆论风暴
+            </a>
+            <a href="小说/第二十二章.html" class="chapter-item">
+                <span class="chapter-number">第22章</span>
+                审判与裁决
+            </a>
+            <a href="小说/第二十三章.html" class="chapter-item">
+                <span class="chapter-number">第23章</span>
+                苏家的胜利
+            </a>
+            <a href="小说/第二十四章.html" class="chapter-item">
+                <span class="chapter-number">第24章</span>
+                结局：新生
+            </a>
+            <a href="小说/第二十五章.html" class="chapter-item">
+                <span class="chapter-number">第25章</span>
+                创立法律援助中心
+            </a>
+            <a href="小说/第二十六章.html" class="chapter-item">
+                <span class="chapter-number">第26章</span>
+                终章：瑶光倾城
+            </a>
+        </div>
+    </div>
+    
+    <div class="description">
+        <h2>📋 项目文档</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+            <a href="README.md" class="chapter-item">
+                <span class="chapter-number">📖</span>
+                项目介绍与感想
+            </a>
+            <a href="小说大纲.md" class="chapter-item">
+                <span class="chapter-number">📝</span>
+                小说大纲
+            </a>
+            <a href="小说完整写作计划.md" class="chapter-item">
+                <span class="chapter-number">📋</span>
+                完整写作计划
+            </a>
+        </div>
+    </div>
+    
+    <div class="description">
+        <h2>🌟 作品特色</h2>
+        <ul>
+            <li><strong>现实主义基础：</strong> 基于真实案件改编，使用化名保护当事人，具有强烈的现实意义</li>
+            <li><strong>智慧复仇策略：</strong> 强调利用法律知识和证据收集，通过合法手段实现正义</li>
+            <li><strong>深刻的人物成长：</strong> 从受害者到拯救者的完整蜕变，展现女性的坚强和智慧</li>
+            <li><strong>浓厚的家庭情感：</strong> 家人从担忧到支持再到并肩作战，血浓于水的情感线</li>
+            <li><strong>专业的法律描述：</strong> 准确的法律条文和司法程序，增强作品的专业性</li>
+            <li><strong>社会价值突出：</strong> 超越个人复仇，最终落脚于帮助更多受害者和推动社会正义</li>
+        </ul>
+    </div>
+    
+    <div class="description">
+        <h2>🤝 开源创作</h2>
+        <p>这部小说采用开源创作模式，诚挚邀请读者朋友参与：</p>
+        <ul>
+            <li><strong>内容完善：</strong> 修改情节、优化对话、增强描写</li>
+            <li><strong>专业指导：</strong> 法律、心理学等专业知识补充</li>
+            <li><strong>语言润色：</strong> 文字表达的优化和修正</li>
+            <li><strong>创意贡献：</strong> 新的情节想法和人物发展</li>
+            <li><strong>社会价值：</strong> 传播反家暴理念，帮助更多人</li>
+        </ul>
+        
+        <p><strong>参与方式：</strong></p>
+        <ul>
+            <li>Fork 本项目并提交 Pull Request</li>
+            <li>在 Issues 中提出修改建议</li>
+            <li>通过 Discussions 参与讨论</li>
+            <li>分享给更多关注社会议题的朋友</li>
+        </ul>
+    </div>
+    
+    <div class="description">
+        <h2>📄 开源许可</h2>
+        <div style="text-align: center; margin: 20px 0;">
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                <img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+            </a>
+        </div>
+        
+        <p style="text-align: center;">
+            本作品《<span xmlns:cc="http://creativecommons.org/ns#" property="cc:title"><strong>重生之瑶光倾城</strong></span>》采用
+            <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享 署名-相同方式共享 4.0 国际许可协议</a>
+            进行许可。
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+            <div style="background: #e8f5e8; padding: 15px; border-radius: 5px; border-left: 4px solid #4caf50;">
+                <strong>✅ 您可以：</strong>
+                <ul style="margin: 10px 0 0 0; padding-left: 20px;">
+                    <li>自由分享和复制</li>
+                    <li>修改和创作衍生作品</li>
+                    <li>商业使用</li>
+                </ul>
+            </div>
+            <div style="background: #fff3e0; padding: 15px; border-radius: 5px; border-left: 4px solid #ff9800;">
+                <strong>⚠️ 您需要：</strong>
+                <ul style="margin: 10px 0 0 0; padding-left: 20px;">
+                    <li>给出适当的署名</li>
+                    <li>衍生作品使用相同许可</li>
+                    <li>标明是否有修改</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="background: #f0f8ff; padding: 20px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #667eea;">
+            <h3 style="margin-top: 0; color: #667eea;">🌱 开源共生社区愿景</h3>
+            <p>通过CC BY-SA许可协议，我们希望建立一个开放、包容的创作社区。所有基于本作品的衍生创作都将保持开源，形成一个互相促进、共同成长的创作生态系统。</p>
+            <p><strong>我们相信：</strong>开源的力量不仅在于技术，更在于思想的传播和价值的共享。让我们一起用文学的力量，为这个世界带来更多的光明和希望。</p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <h3>💫 致敬与希望</h3>
+        <p>本故事献给一位真实的受害者——刘明瑶，愿她在另一个世界获得安宁与正义。</p>
+        <p>现实是残酷的，但我们相信，通过文学的力量，可以为那些身处困境的人们带去希望和勇气。</p>
+        <p>愿每个人都能被温柔以待，愿正义永远不会缺席。</p>
+        
+        <div style="margin-top: 20px;">
+            <a href="https://github.com/greywolfrock772/xiaoyao-rebirth" class="github-link">
+                📱 GitHub 项目主页
+            </a>
+            <a href="https://github.com/greywolfrock772/xiaoyao-rebirth/issues" class="github-link">
+                ✉️ 意见反馈
+            </a>
+        </div>
+        
+        <div style="margin-top: 20px; font-size: 0.9em; color: #666;">
+            <p>作为一名业余创作者，我深知自己功力有限。恳请各位读者朋友不吝批评指正，让我们共同努力，将这个故事打磨得更加完善。</p>
+            <p><em>最后更新：2025年9月</em></p>
+        </div>
+    </div>
+</body>
+</html>
